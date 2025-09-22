@@ -579,10 +579,24 @@ document.getElementById('year').textContent = new Date().getFullYear();
 function renderProducts() {
   const grid = $('productsGrid');
 
-  // Use whichever input is filled
-  let query = ($('searchInput').value || $('searchInputMobile').value).trim().toLowerCase();
-  let cat = $('categoryFilter').value || $('categoryFilterMobile').value;
-  const sort = $('sortSelect').value || $('sortSelectMobile').value;
+  // detect mobile vs desktop
+  let isMobile = window.innerWidth <= 640;
+
+  // ✅ Use correct search input
+  let query = isMobile
+    ? $('searchInputMobile').value.trim().toLowerCase()
+    : $('searchInput').value.trim().toLowerCase();
+
+  // ✅ Category selection
+  let cat = isMobile
+    ? $('categoryFilterMobile').value
+    : $('categoryFilter').value;
+  if (!cat) cat = 'all';
+
+  // ✅ Sort selection
+  let sort = isMobile
+    ? $('sortSelectMobile').value
+    : $('sortSelect').value;
 
   // keep desktop & mobile in sync
   $('searchInput').value = query;
@@ -605,7 +619,9 @@ function renderProducts() {
   if (sort === 'price-desc') items.sort((a, b) => b.price - a.price);
 
   grid.innerHTML = '';
-  $('resultsText').textContent = items.length ? `${items.length} result${items.length > 1 ? 's' : ''}` : 'No results';
+  $('resultsText').textContent = items.length
+    ? `${items.length} result${items.length > 1 ? 's' : ''}`
+    : 'No results';
 
   items.forEach(p => {
     const card = document.createElement('article');
@@ -909,7 +925,3 @@ window.removeFromCart = removeFromCart;
 window.clearCart = clearCart;
 window.navigateTo = navigateTo;
 window.changeDetailQty = changeDetailQty;
-
-
-
-
