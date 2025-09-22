@@ -12,7 +12,7 @@ const PRODUCTS = [
     name: "HP 250 G9 8Y2Y9PA Laptop",
     price: 23900,
     category: "Electronics",
-    img: ["../hplap1.jpg", "../hplap2.webp", "../hplap3.jpg"],
+    img: ["hplap1.jpg", "hplap2.webp", "hplap3.jpg"],
     tags: ["laptop", "electronics"],
     desc: "Affordable and reliable laptop with a 15.6-inch display, Intel Celeron processor, and Windows 11 Pro."
   },
@@ -21,7 +21,7 @@ const PRODUCTS = [
     name: "Sony WH-CH720N Noise Canceling Wireless headphones",
     price: 8728,
     category: "Electronics",
-    img: ["../headphone1.webp", "../headphone2.webp","../headphone3.webp"],
+    img: ["headphone1.webp", "headphone2.webp","headphone3.webp"],
     tags: ["headphones", "audio"],
     desc: "Comfortable over-ear headphones with active noise cancelling."
   },
@@ -30,7 +30,7 @@ const PRODUCTS = [
     name: "Samsung Galaxy A06 5g",
     price: 7549,
     category: "Electronics",
-    img: ["../sphone1.webp", "../sphone2.webp","../sphone3.webp"],
+    img: ["sphone1.webp", "sphone2.webp","sphone3.webp"],
     tags: ["smartphone", "electronics"],
     desc: "Affordable 5G smartphone from Samsung with sleek design and smooth performance."
   },
@@ -39,7 +39,7 @@ const PRODUCTS = [
     name: "Timex Analog Watch",
     price: 739,
     category: "Accessories",
-    img: ["../awatch1.webp", "../awatch2.webp","../awatch3.webp"],
+    img: ["awatch1.webp", "awatch2.webp","awatch3.webp"],
     tags: ["watch", "accessories"],
     desc: "Classic analog watch from Timex with durable build and timeless design."
   },
@@ -48,7 +48,7 @@ const PRODUCTS = [
     name: "Portronics SoundDrum 1",
     price: 1199,
     category: "Audio",
-    img: ["../bspeaker1.webp", "../bspeaker2.webp","../bspeaker3.webp"],
+    img: ["bspeaker1.webp", "bspeaker2.webp","bspeaker3.webp"],
     tags: ["speaker", "audio"],
     desc: "Compact 10W portable Bluetooth speaker with TWS support and Bluetooth 5.0 connectivity."
   },
@@ -56,7 +56,7 @@ const PRODUCTS = [
     name: "Zebronics Zeb-Jaguar Mouse", 
     price: 269,
     category: "Accessories",
-    img:["../wmouse1.webp","../wmouse2.webp","../wmouse3.webp"] , 
+    img:["wmouse1.webp","wmouse2.webp","wmouse3.webp"] , 
     tags:["mouse","accessories"] ,
     desc:"Ergonomic wireless mouse with adjustable DPI." 
   },
@@ -64,7 +64,7 @@ const PRODUCTS = [
     name: " Colebrook Men's Cotton Shirt", 
     price: 449, 
     category: "Clothing", 
-    img: ["../pshirt1.webp","../pshirt2.webp","../pshirt3.webp"], 
+    img: ["pshirt1.webp","pshirt2.webp","pshirt3.webp"], 
     tags:["shirt","clothing"], 
     desc:"Comfortable solid cotton shirt with a relaxed fit, ideal for casual or semi-formal wear."
   },
@@ -72,7 +72,7 @@ const PRODUCTS = [
     name: "Men's Premium T-Shirt", 
     price: 449, 
     category: "Clothing", 
-    img:[ "../tshirt1.webp","../tshirt2.webp"], 
+    img:[ "tshirt1.webp","tshirt2.webp"], 
     tags: ["t-shirt", "clothing"], 
     desc: "Stylish men's t-shirt featuring a navy blue base with red and white vertical stripes. Crafted from high-quality cotton for comfort and durability." 
   },
@@ -80,7 +80,7 @@ const PRODUCTS = [
     name: "Men's Casual Partywear Sneakers", 
     price: 799, 
     category: "Footwear", 
-    img: ["../sneaker1.jpg","../sneaker2.jpg","../sneaker3.jpg"], 
+    img: ["sneaker1.jpg","sneaker2.jpg","sneaker3.jpg"], 
     tags: ["sneakers", "footwear"], 
     desc:"Trendy black sneakers designed for comfort and style, perfect for casual outings and partywear."
   },
@@ -89,7 +89,7 @@ const PRODUCTS = [
     name: "Realme Buds Wireless 2 Neo",
     price: 1299,
     category: "Audio",
-    img: ["../buds1.webp", "../buds2.webp", "../buds3.webp"],
+    img: ["buds1.webp", "buds2.webp", "buds3.webp"],
     tags: ["earphones", "audio"],
     desc: "Wireless neckband earphones with deep bass, Type-C fast charging, and up to 17 hours of playback."
   },
@@ -98,7 +98,7 @@ const PRODUCTS = [
     name: "boAt Wave Call Smart Watch",
     price: 1499,
     category: "Electronics",
-    img: ["../swatch1.webp", "../swatch2.webp"],
+    img: ["swatch1.webp", "swatch2.webp"],
     tags: ["smartwatch", "electronics"],
     desc: "Stylish smartwatch with Bluetooth calling, fitness tracking, and 1.69-inch HD display."
   },
@@ -107,7 +107,7 @@ const PRODUCTS = [
     name: "Wildcraft 44L Backpack",
     price: 999,
     category: "Bags",
-    img: ["../wildcraft1.webp", "../wildcraft2.webp", "../wildcraft3.webp"],
+    img: ["wildcraft1.webp", "wildcraft2.webp", "wildcraft3.webp"],
     tags: ["backpack", "bags"],
     desc: "Spacious and durable 44L backpack with multiple compartments and padded straps for everyday use."
   },
@@ -116,7 +116,7 @@ const PRODUCTS = [
     name: "Fastrack Reflex Beat+ Fitness Band",
     price: 1199,
     category: "Fitness",
-    img: ["../fastrack1.webp", "../fastrack2.webp","../fastrack3.webp"],
+    img: ["fastrack1.webp", "fastrack2.webp","fastrack3.webp"],
     tags: ["fitness band", "fitness"],
     desc: "Affordable fitness band with heart rate monitor, step counter, and sleep tracking."
   },
@@ -125,7 +125,7 @@ const PRODUCTS = [
     name: "Dell KB216 Wired Keyboard",
     price: 599,
     category: "Accessories",
-    img: ["../dellkb2.webp"],
+    img: ["dellkb2.webp"],
     tags: ["keyboard", "accessories"],
     desc: "Reliable full-size wired keyboard with chiclet keys and comfortable typing experience."
   },
@@ -134,7 +134,7 @@ const PRODUCTS = [
     name: "American Tourister Duffel Bag",
     price: 1399,
     category: "Bags",
-    img: ["../duffel1.webp", "../duffel2.webp"],
+    img: ["duffel1.webp", "duffel2.webp"],
     tags: ["duffel bag", "bags"],
     desc: "Lightweight and durable duffel bag perfect for travel and gym use."
   },
@@ -143,7 +143,7 @@ const PRODUCTS = [
     name: "Fire-Boltt Phoenix Smart Watch",
     price: 1799,
     category: "Electronics",
-    img: ["../fireboltt1.webp", "../fireboltt2.webp"],
+    img: ["fireboltt1.webp", "fireboltt2.webp"],
     tags: ["smartwatch", "electronics"],
     desc: "Smartwatch with Bluetooth calling, multiple sports modes, and sleek metal body."
   },
@@ -152,7 +152,7 @@ const PRODUCTS = [
     name: "Lenovo IdeaPad Slim 3",
     price: 32999,
     category: "Electronics",
-    img: ["../lenovo1.webp", "../lenovo2.webp"],
+    img: ["lenovo1.webp", "lenovo2.webp"],
     tags: ["laptop", "electronics"],
     desc: "Lightweight laptop with AMD Ryzen 5 processor, 8GB RAM, and 512GB SSD storage."
   },
@@ -161,7 +161,7 @@ const PRODUCTS = [
     name: "Canon EOS 1500D DSLR Camera",
     price: 31999,
     category: "Electronics",
-    img: ["../canon1.webp", "../canon2.webp","../canon3.webp","../canon4.webp"],
+    img: ["canon1.webp", "canon2.webp","canon3.webp","canon4.webp"],
     tags: ["camera", "electronics"],
     desc: "DSLR camera with 24.1MP sensor, WiFi, and full HD video recording support."
   },
@@ -170,7 +170,7 @@ const PRODUCTS = [
     name: "Nike Air Zoom Running Shoes",
     price: 2999,
     category: "Footwear",
-    img: ["../nike1.webp", "../nike2.webp","../nike3.webp"],
+    img: ["nike1.webp", "nike2.webp","nike3.webp"],
     tags: ["shoes", "footwear"],
     desc: "Comfortable and lightweight running shoes designed for daily workouts."
   },
@@ -179,7 +179,7 @@ const PRODUCTS = [
     name: "Adidas Men's Track Pants",
     price: 1099,
     category: "Clothing",
-    img: ["../adidaspants1.webp", "../adidaspants2.webp"],
+    img: ["adidaspants1.webp", "adidaspants2.webp"],
     tags: ["track pants", "clothing"],
     desc: "Stylish and stretchable track pants perfect for workouts and casual wear."
   },
@@ -188,7 +188,7 @@ const PRODUCTS = [
     name: "JBL Flip 6 Bluetooth Speaker",
     price: 8999,
     category: "Audio",
-    img: ["../jbl1.webp", "../jbl2.webp"],
+    img: ["jbl1.webp", "jbl2.webp"],
     tags: ["speaker", "audio"],
     desc: "Powerful portable speaker with deep bass, IP67 waterproof rating, and 12 hours of playtime."
   },
@@ -197,7 +197,7 @@ const PRODUCTS = [
     name: "Puma Sports Backpack",
     price: 1299,
     category: "Bags",
-    img: ["../pumabp1.webp", "../pumabp2.webp"],
+    img: ["pumabp1.webp", "pumabp2.webp"],
     tags: ["backpack", "bags"],
     desc: "Durable and stylish sports backpack with multiple compartments and padded straps."
   },
@@ -206,7 +206,7 @@ const PRODUCTS = [
     name: "Apple AirPods Pro (2nd Gen)",
     price: 24999,
     category: "Audio",
-    img: ["../airpods1.webp", "../airpods2.webp","../airpods3.webp"],
+    img: ["airpods1.webp", "airpods2.webp","airpods3.webp"],
     tags: ["earbuds", "audio"],
     desc: "Premium wireless earbuds with active noise cancellation and adaptive transparency mode."
   },
@@ -215,7 +215,7 @@ const PRODUCTS = [
     name: "HRX Men's Polo T-Shirt",
     price: 549,
     category: "Clothing",
-    img: ["../hrx1.webp", "../hrx2.webp"],
+    img: ["hrx1.webp", "hrx2.webp"],
     tags: ["t-shirt", "clothing"],
     desc: "Casual polo t-shirt made with breathable cotton fabric for all-day comfort."
   },
@@ -224,7 +224,7 @@ const PRODUCTS = [
     name: "Mi Smart Band 6",
     price: 2999,
     category: "Fitness",
-    img: ["../miband1.webp", "../miband2.webp"],
+    img: ["miband1.webp", "miband2.webp"],
     tags: ["fitness band", "fitness"],
     desc: "Smart fitness band with AMOLED display, SpO2 monitoring, and 30 workout modes."
   },
@@ -233,7 +233,7 @@ const PRODUCTS = [
     name: "Ray-Ban Aviator Sunglasses",
     price: 4599,
     category: "Accessories",
-    img: ["../rayban1.webp", "../rayban2.webp"],
+    img: ["rayban1.webp", "rayban2.webp"],
     tags: ["sunglasses", "accessories"],
     desc: "Classic Ray-Ban aviator sunglasses with UV protection and stylish metal frame."
   },
@@ -242,7 +242,7 @@ const PRODUCTS = [
   name: "Levi's Men's Slim Fit Jeans",
   price: 1799,
   category: "Fashion",
-  img: ["../levis1.webp", "../levis2.webp"],
+  img: ["levis1.webp", "levis2.webp"],
   tags: ["jeans", "fashion"],
   desc: "Classic slim-fit denim jeans from Levi's, made with durable cotton blend."
 },
@@ -251,7 +251,7 @@ const PRODUCTS = [
   name: "Allen Solly Women's Handbag",
   price: 2499,
   category: "Fashion",
-  img: ["../allensolly1.webp", "../allensolly2.webp","../allensolly3.webp"],
+  img: ["allensolly1.webp", "allensolly2.webp","allensolly3.webp"],
   tags: ["handbag", "fashion"],
   desc: "Trendy women's handbag with spacious compartments and premium faux leather finish."
 },
@@ -260,7 +260,7 @@ const PRODUCTS = [
   name: "Nike Men's Sports Jacket",
   price: 3199,
   category: "Fashion",
-  img: ["../nikejacket1.webp", "../nikejacket2.webp"],
+  img: ["nikejacket1.webp", "nikejacket2.webp"],
   tags: ["jacket", "fashion"],
   desc: "Lightweight sports jacket with quick-dry fabric, perfect for workouts and casual wear."
 },
@@ -269,7 +269,7 @@ const PRODUCTS = [
   name: "Skybags School Backpack",
   price: 1499,
   category: "School Products",
-  img: ["../skybags1.webp", "../skybags2.webp","../skybags3.webp"],
+  img: ["skybags1.webp", "skybags2.webp","skybags3.webp"],
   tags: ["school bag", "bags"],
   desc: "Durable 3-compartment school backpack with padded straps and bottle holder."
 },
@@ -278,7 +278,7 @@ const PRODUCTS = [
   name: "Classmate Spiral Notebook (Pack of 4)",
   price: 249,
   category: "School Products",
-  img: ["../notebook1.webp", "../notebook2.webp"],
+  img: ["notebook1.webp", "notebook2.webp"],
   tags: ["notebook", "stationery"],
   desc: "Set of 4 spiral notebooks with 200 pages each, high-quality paper for smooth writing."
 },
@@ -287,7 +287,7 @@ const PRODUCTS = [
   name: "Doms Geometry Box",
   price: 89,
   category: "School Products",
-  img: ["../geometry1.jpg", "../geometry2.jpg"],
+  img: ["geometry1.jpg", "geometry2.jpg"],
   tags: ["geometry box", "stationery"],
   desc: "Durable geometry box with compass, ruler, protractor, and eraser."
 },
@@ -296,7 +296,7 @@ const PRODUCTS = [
   name: "Faber-Castell Oil Pastels (Pack of 50)",
   price: 299,
   category: "School Products",
-  img: ["../pastel1.jpg", "../pastel2.webp"],
+  img: ["pastel1.jpg", "pastel2.webp"],
   tags: ["crayons", "art supplies"],
   desc: "Vibrant oil pastels with smooth texture, perfect for school art projects."
 },
@@ -305,7 +305,7 @@ const PRODUCTS = [
   name: "Prestige Non-Stick Frying Pan",
   price: 749,
   category: "Home & Kitchen",
-  img: ["../pan1.webp"],
+  img: ["pan1.webp"],
   tags: ["kitchen", "cookware"],
   desc: "Durable non-stick frying pan with strong handle and even heat distribution."
 },
@@ -314,7 +314,7 @@ const PRODUCTS = [
   name: "Milton Thermosteel Water Bottle (1L)",
   price: 899,
   category: "Home & Kitchen",
-  img: ["../bottle1.webp", "../bottle2.webp"],
+  img: ["bottle1.webp", "bottle2.webp"],
   tags: ["water bottle", "kitchen"],
   desc: "Stainless steel insulated water bottle that keeps drinks hot or cold for 24 hours."
 },
@@ -323,7 +323,7 @@ const PRODUCTS = [
   name: "Philips 9W LED Bulb (Pack of 3)",
   price: 299,
   category: "Home & Kitchen",
-  img: ["../bulb1.webp"],
+  img: ["bulb1.webp"],
   tags: ["led bulb", "lighting"],
   desc: "Energy-efficient LED bulbs with bright light and long lifespan."
 },
@@ -332,7 +332,7 @@ const PRODUCTS = [
   name: "Woodland Men's Casual Shoes",
   price: 2499,
   category: "Footwear",
-  img: ["../woodland1.jpg", "../woodland2.webp"],
+  img: ["woodland1.jpg", "woodland2.webp"],
   tags: ["shoes", "footwear"],
   desc: "Stylish leather casual shoes from Woodland, perfect for outdoor and casual wear."
 },
@@ -341,7 +341,7 @@ const PRODUCTS = [
   name: "Campus Women's Running Shoes",
   price: 1299,
   category: "Footwear",
-  img: ["../campus1.webp", "../campus2.webp","../campus3.webp"],
+  img: ["campus1.webp", "campus2.webp","campus3.webp"],
   tags: ["running shoes", "footwear"],
   desc: "Lightweight running shoes designed for women with cushioned sole and breathable mesh."
 },
@@ -350,7 +350,7 @@ const PRODUCTS = [
   name: "Safari Polyester Trolley Bag (Cabin Size)",
   price: 2999,
   category: "Bags",
-  img: ["../safari1.webp", "../safari2.webp"],
+  img: ["safari1.webp", "safari2.webp"],
   tags: ["trolley bag", "bags"],
   desc: "Durable and lightweight cabin trolley bag with smooth wheels and lock system."
 },
@@ -359,7 +359,7 @@ const PRODUCTS = [
   name: "Wild Stone Code Perfume Spray",
   price: 249,
   category: "Fashion",
-  img: ["../perfume1.webp", "../perfume2.webp"],
+  img: ["perfume1.webp", "perfume2.webp"],
   tags: ["perfume", "fashion"],
   desc: "Long-lasting body spray with refreshing fragrance, suitable for daily use."
 },
@@ -368,7 +368,7 @@ const PRODUCTS = [
   name: "Lakmé 9 to 5 Primer + Matte Lipstick",
   price: 399,
   category: "Fashion",
-  img: ["../lipstick2.webp"],
+  img: ["lipstick2.webp"],
   tags: ["lipstick", "makeup"],
   desc: "Matte finish lipstick with primer, long-lasting and smooth application."
 },
@@ -377,7 +377,7 @@ const PRODUCTS = [
   name: "Colgate Strong Teeth Toothpaste (500g)",
   price: 199,
   category: "Home & Kitchen",
-  img: ["../toothpaste1.webp", "../toothpaste2.webp"],
+  img: ["toothpaste1.webp", "toothpaste2.webp"],
   tags: ["toothpaste", "personal care"],
   desc: "Strengthens teeth enamel and provides cavity protection for the whole family."
 },
@@ -386,7 +386,7 @@ const PRODUCTS = [
   name: "Dettol Handwash Refill (750ml)",
   price: 139,
   category: "Home & Kitchen",
-  img: ["../handwash1.jpg"],
+  img: ["handwash1.jpg"],
   tags: ["handwash", "personal care"],
   desc: "Antibacterial handwash that kills 99.9% of germs and keeps hands soft."
 },
@@ -395,7 +395,7 @@ const PRODUCTS = [
   name: "Philips Beard Trimmer BT3102",
   price: 1349,
   category: "Electronics",
-  img: ["../trimmer1.webp"],
+  img: ["trimmer1.webp"],
   tags: ["trimmer", "electronics"],
   desc: "Cordless rechargeable beard trimmer with 20 length settings and long battery life."
 },
@@ -404,7 +404,7 @@ const PRODUCTS = [
   name: "LG 32-inch HD Ready Smart LED TV",
   price: 13999,
   category: "Electronics",
-  img: ["../lgtv1.webp", "../lgtv2.webp","../lgtv3.webp","../lgtv4.webp"],
+  img: ["lgtv1.webp", "lgtv2.webp","lgtv3.webp","lgtv4.webp"],
   tags: ["tv", "electronics"],
   desc: "Smart LED TV with HD resolution, built-in WiFi, and multiple HDMI/USB ports."
 },
@@ -413,7 +413,7 @@ const PRODUCTS = [
   name: "Asus ROG Strix Gaming Laptop",
   price: 89999,
   category: "Electronics",
-  img: ["../asusrog1.webp", "../asusrog2.webp"],
+  img: ["asusrog1.webp", "asusrog2.webp"],
   tags: ["gaming laptop", "electronics"],
   desc: "High-performance gaming laptop with AMD Ryzen 7, RTX 3060, and 16GB RAM."
 },
@@ -422,7 +422,7 @@ const PRODUCTS = [
   name: "Samsung Galaxy Tab A8",
   price: 15999,
   category: "Electronics",
-  img: ["../tab1.webp", "../tab2.webp"],
+  img: ["tab1.webp", "tab2.webp"],
   tags: ["tablet", "electronics"],
   desc: "Affordable Android tablet with 10.5-inch display, 4GB RAM, and 64GB storage."
 },
@@ -431,7 +431,7 @@ const PRODUCTS = [
   name: "Boat Airdopes 141",
   price: 1299,
   category: "Audio",
-  img: ["../airdopes1.webp"],
+  img: ["airdopes1.webp"],
   tags: ["earbuds", "audio"],
   desc: "Wireless earbuds with 42 hours playback, ASAP charge, and IPX4 water resistance."
 },
@@ -440,7 +440,7 @@ const PRODUCTS = [
   name: "Samsung 253L Frost Free Refrigerator",
   price: 25999,
   category: "Home & Kitchen",
-  img: ["../fridge1.webp", "../fridge2.webp","../fridge3.webp"],
+  img: ["fridge1.webp", "fridge2.webp","fridge3.webp"],
   tags: ["refrigerator", "appliances"],
   desc: "Double-door refrigerator with digital inverter compressor and energy efficiency."
 },
@@ -449,7 +449,7 @@ const PRODUCTS = [
   name: "Bajaj Rex 500W Mixer Grinder",
   price: 2199,
   category: "Home & Kitchen",
-  img: ["../mixer1.webp", "../mixer2.webp","../mixer3.webp"],
+  img: ["mixer1.webp", "mixer2.webp","mixer3.webp"],
   tags: ["mixer", "kitchen appliances"],
   desc: "Durable mixer grinder with 3 jars, stainless steel blades, and 3-speed control."
 },
@@ -458,7 +458,7 @@ const PRODUCTS = [
   name: "OnePlus Nord CE 3 Lite 5G",
   price: 19999,
   category: "Electronics",
-  img: ["../oneplus1.webp", "../oneplus2.webp","../oneplus3"],
+  img: ["oneplus1.webp", "oneplus2.webp","oneplus3"],
   tags: ["smartphone", "electronics"],
   desc: "Mid-range 5G smartphone with 108MP camera, Snapdragon 695, and 67W fast charging."
 },
@@ -467,7 +467,7 @@ const PRODUCTS = [
   name: "Apple MacBook Air M2",
   price: 114999,
   category: "Electronics",
-  img: ["../mba1.webp", "../mba2.webp"],
+  img: ["mba1.webp", "mba2.webp"],
   tags: ["laptop", "electronics"],
   desc: "Powerful yet portable laptop with Apple M2 chip, 13.6-inch Retina display, and long battery life."
 },
@@ -476,7 +476,7 @@ const PRODUCTS = [
   name: "ASICS Men's Running Shoes",
   price: 4499,
   category: "Footwear",
-  img: ["../asics1.webp", "../asics2.webp"],
+  img: ["asics1.webp", "asics2.webp"],
   tags: ["running shoes", "footwear"],
   desc: "Lightweight running shoes with excellent cushioning and support for long runs."
 },
@@ -485,7 +485,7 @@ const PRODUCTS = [
   name: "Philips Hair Dryer",
   price: 999,
   category: "Home & Kitchen",
-  img: ["../dryer1.webp", "../dryer2.webp"],
+  img: ["dryer1.webp", "dryer2.webp"],
   tags: ["hair dryer", "appliances"],
   desc: "Compact 1200W hair dryer with multiple heat settings and foldable handle."
 },
@@ -494,7 +494,7 @@ const PRODUCTS = [
   name: "Casio Digital Watch",
   price: 1999,
   category: "Accessories",
-  img: ["../casio1.webp", "../casio2.webp"],
+  img: ["casio1.webp", "casio2.webp"],
   tags: ["watch", "accessories"],
   desc: "Classic digital watch with alarm, stopwatch, and LED backlight."
 },
@@ -503,7 +503,7 @@ const PRODUCTS = [
   name: "Nike Dri-FIT Training T-Shirt",
   price: 1699,
   category: "Clothing",
-  img: ["../niketee1.webp", "../niketee2.webp"],
+  img: ["niketee1.webp", "niketee2.webp"],
   tags: ["t-shirt", "clothing"],
   desc: "Moisture-wicking training t-shirt designed for comfort during workouts."
 },
@@ -512,7 +512,7 @@ const PRODUCTS = [
   name: "Samsung 7kg Fully Automatic Washing Machine",
   price: 18999,
   category: "Home & Kitchen",
-  img: ["../wmachine1.webp", "../wmachine2.webp","../wmachine3.webp","../wmachine4.webp"],
+  img: ["wmachine1.webp", "wmachine2.webp","wmachine3.webp","wmachine4.webp"],
   tags: ["washing machine", "appliances"],
   desc: "Front-load washing machine with digital inverter motor and 12 wash programs."
 },
@@ -521,7 +521,7 @@ const PRODUCTS = [
   name: "HP DeskJet 2331 All-in-One Printer",
   price: 4799,
   category: "Electronics",
-  img: ["../printer1.webp", "../printer2.webp","../printer3.webp"],
+  img: ["printer1.webp", "printer2.webp","printer3.webp"],
   tags: ["printer", "electronics"],
   desc: "Compact all-in-one printer for printing, scanning, and copying at home."
 },
@@ -530,7 +530,7 @@ const PRODUCTS = [
   name: "Woodland Leather Wallet",
   price: 1299,
   category: "Fashion",
-  img: ["../wallet1.webp"],
+  img: ["wallet1.webp"],
   tags: ["wallet", "fashion"],
   desc: "Durable leather wallet with multiple compartments and slim design."
 },
@@ -539,7 +539,7 @@ const PRODUCTS = [
     name: "Prestige Electric Kettle (1.5L)",
     price: 1299,
     category: "Home & Kitchen",
-    img: ["../kettle1.webp", "../kettle2.webp","../kettle3.webp"],
+    img: ["kettle1.webp", "kettle2.webp","kettle3.webp"],
     tags: ["kettle", "kitchen appliances"],
     desc: "Stainless steel electric kettle with automatic shut-off and 1500W fast boiling."
   }
