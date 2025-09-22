@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Shopy</title>
+  <link rel="stylesheet" href="./style.css">
+  <link rel="icon" href="../brand.png" type="image/png">
+  <!-- Font Awesome CDN -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+
+  <!-- <meta name="description" content="Single-file demo e-commerce site (products, cart, checkout) - responsive and uses localStorage" /> -->
+  </head>
+<body>
+  <!-- Header -->
+  <header>
+  <div class="brand">
+    <img src="../brand.png" alt="Shopy Logo">
+    <h1>Shopy</h1>
+    
+  <!-- Hamburger button (right corner on small screens) -->
+  <button class="hamburger" id="hamburgerBtn" aria-label="Toggle menu" >☰</button>
+  </div>
+
+
+  <!-- Normal header actions (hidden on small screens) -->
+  <div class="actions desktop-only">
+    <input type="text" id="searchInput" placeholder="Search products">
+    <select id="categoryFilter"></select>
+    <select id="sortSelect">
+      <option value="relevance">Sort by</option>
+      <option value="price-asc">Price: Low to High</option>
+      <option value="price-desc">Price: High to Low</option>
+    </select>
+    <button class="cart-btn" onclick="navigateTo('#/cart')">
+      🛒 Cart <span class="cart-count" id="cartCount">0</span>
+    </button>
+  </div>
+</header>
+
+<!-- Collapsible mobile nav -->
+<nav class="mobile-nav" id="mobileNav">
+  <input type="text" id="searchInputMobile" placeholder="Search products">
+  <select id="categoryFilterMobile"></select>
+  <select id="sortSelectMobile">
+    <option value="relevance">Sort by</option>
+    <option value="price-asc">Price: Low to High</option>
+    <option value="price-desc">Price: High to Low</option>
+  </select>
+  <button class="cart-btn" onclick="navigateTo('#/cart')">
+    🛒 Cart <span class="cart-count" id="cartCountMobile">0</span>
+  </button>
+</nav>
+
+
+  <!-- Main app area (routing by hash) -->
+  <main>
+    <div class="container" id="app">
+
+      <!-- HOME / PRODUCTS VIEW -->
+      <section id="view-home" class="view" style="margin-top: 70px;">
+        <div style="display:flex;align-items:center;gap:10px;margin-bottom:12px">
+          <h2 style="margin:0">Featured Products</h2>
+          <div class="muted" id="resultsText" style="margin-left:8px"></div>
+        </div>
+        <div id="productsGrid" class="grid" aria-live="polite"></div>
+      </section>
+
+      <!-- PRODUCT DETAILS (single page) -->
+      <section id="view-product" class="view hidden" aria-live="polite">
+  <div class="detail">
+    <div class="images card">
+      <div style="display:flex;gap:8px">
+        <div style="flex:1">
+          <img id="detailMainImg" src="" alt="product image" style="width:100%;border-radius:8px" />
+        </div>
+      </div>
+      <!-- Main product image -->
+<img id="detailMainImg" />
+
+<!-- Thumbnails go here -->
+<div id="detailThumbs"></div>
+
+      <div style="margin-top:12px" id="detailThumbs"></div>
+    </div>
+    <div class="info card">
+      <h2 id="detailName">Product Name</h2>
+      <div id="detailCategory" class="muted">Category</div>
+      <div style="height:6px"></div>
+      <div class="price" id="detailPrice">₹0.00</div>
+      <div style="height:6px"></div>
+      <p id="detailDesc" class="muted">Product description</p>
+      <div style="height:8px"></div>
+
+      <div style="display:flex;gap:12px;align-items:center;margin-top:8px">
+        <div class="qty-control">
+          <label for="detailQty" class="muted" style="margin-right:8px">Quantity</label>
+          <button onclick="changeDetailQty(-1)" aria-label="decrease">−</button>
+          <input id="detailQty" type="number" value="1" min="1" style="width:64px;text-align:center;border-radius:8px;border:1px solid #e5e7eb;padding:6px" />
+          <button onclick="changeDetailQty(1)" aria-label="increase">+</button>
+        </div>
+        <button class="btn" id="addToCartBtn">Add to Cart</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Move the Back button here at the bottom -->
+  <div style="margin-top:16px;text-align:center">
+    <button class="btn " onclick="navigateTo('#/')">← Back to products</button>
+  </div>
+</section>
+
+
+      <!-- CART VIEW -->
+<section id="view-cart" class="view hidden" aria-live="polite">
+
+  <h2>Your Cart</h2>
+  <div style="display:flex;gap:16px;flex-wrap:wrap">
+    <div style="flex:1;min-width:260px">
+      <div id="cartList" class="cart-list"></div>
+    </div>
+    <aside style="width:320px">
+      <div class="cart-summary">
+        <h3>Order Summary</h3>
+        <div style="display:flex;justify-content:space-between">
+          <div class="muted">Items</div>
+          <div id="summaryItems">0</div>
+        </div>
+        <div style="display:flex;justify-content:space-between;margin-top:8px">
+          <div class="muted">Total</div>
+          <div id="summaryTotal">$0.00</div>
+        </div>
+        <div style="height:12px"></div>
+        <button class="btn" style="width:100%" onclick="navigateTo('#/checkout')" id="proceedCheckout">Proceed to Checkout</button>
+        <div style="height:8px"></div>
+        <button class="btn secondary" style="width:100%" onclick="clearCart()">Clear Cart</button>
+      </div>
+    </aside>
+  </div>
+
+  <!-- ✅ Previous button at bottom -->
+  <div style="text-align:center; margin-top: 30px;">
+    <button class="btn " onclick="window.history.back()">← Previous</button>
+  </div>
+</section>
+
+   
+      <!-- CHECKOUT VIEW -->
+      <section id="view-checkout" class="view hidden" aria-live="polite">
+        <h2>Checkout</h2>
+        <div style="display:flex;gap:16px;flex-wrap:wrap">
+          <form id="checkoutForm" style="flex:1;min-width:260px;max-width:720px">
+            <div class="row">
+              <label for="cname">Full name</label>
+              <input id="cname" type="text" required placeholder="Jane Doe" />
+            </div>
+            <div class="row">
+              <label for="cemail">Email</label>
+              <input id="cemail" type="email" required placeholder="you@example.com" />
+            </div>
+            <div class="row">
+              <label for="caddress">Address</label>
+              <textarea id="caddress" rows="3" required placeholder="Street, city, state, zip"></textarea>
+            </div>
+            <div class="row">
+              <label for="cpayment">Payment method</label>
+              <select id="cpayment" required>
+                <option value="card">Credit / Debit Card</option>
+                <option value="cod">Cash on Delivery</option>
+              </select>
+            </div>
+            <div style="display:flex;gap:8px">
+              <button class="btn" type="submit">Place Order</button>
+              <button type="button" class="btn secondary" onclick="navigateTo('#/cart')">Back to Cart</button>
+            </div>
+          </form>
+
+          <aside style="width:320px">
+            <div class="cart-summary">
+              <h3>Your order</h3>
+              <div id="checkoutItemsList" style="display:flex;flex-direction:column;gap:8px;margin-top:8px"></div>
+              <div style="height:8px"></div>
+              <div style="display:flex;justify-content:space-between">
+                <div class="muted">Total</div>
+                <div id="checkoutTotal">$0.00</div>
+              </div>
+            </div>
+          </aside>
+        </div>
+        
+<!-- Back to Home Button -->
+<div class="center-btn">
+  <button class="back-home-btn" onclick="window.location.href='index.html'">
+    ← Back to Home
+  </button>
+</div>
+
+<style>
+  
+/* Wrapper to center the button */
+.center-btn {
+  display: flex;
+  justify-content: center;
+  margin: 20px 0;
+}
+
+/* Base button styles */
+.back-home-btn {
+  background: #16664a;
+  border: none;
+  border-radius: 8px;
+  color: #fff;
+  cursor: pointer;
+  font-size: 16px;
+  padding: 12px 24px;
+  transition: background 0.3s ease, transform 0.2s ease;
+  width: auto; /* adaptive width */
+  max-width: 220px;
+}
+
+/* Hover effect */
+.back-home-btn:hover {
+  background: #0f4d37;
+  transform: translateY(-2px);
+}
+
+/* 🔹 Responsive adjustments */
+@media (max-width: 768px) {
+  .back-home-btn {
+    font-size: 15px;
+    padding: 10px 20px;
+    width: 80%;  /* take more width on tablets/phones */
+  }
+}
+
+@media (max-width: 480px) {
+  .back-home-btn {
+    font-size: 14px;
+    padding: 10px;
+    width: 100%; /* full width on small screens */
+  }
+}
+
+</style>
+      </section>
+
+      <!-- ORDER CONFIRMATION -->
+      <section id="view-confirmation" class="view hidden" aria-live="polite">
+        <div class="card" style="text-align:center">
+          <h2>Order Confirmed 🎉</h2>
+          <p class="muted">Thanks for your purchase! Your order has been placed successfully.</p>
+          <p>Order ID: <strong id="orderIdDisplay"></strong></p>
+          <div style="height:10px"></div>
+          <button class="btn" onclick="navigateTo('#/')">Continue Shopping</button>
+        </div>
+      </section>
+
+    </div>
+
+
+    
+  </main>
+
+
+
+  
+
+ <footer style="background-color: #02224e; padding: 40px 20px; color: #f9fafb;">
+  <div style="max-width: 1200px; margin: auto; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 40px;">
+    
+    <!-- Brand Section -->
+    <div style="flex: 1; min-width: 250px;">
+      <h2 style="margin-bottom: 10px; color: #ffffff;">Shopy</h2>
+      <p style="color: #d1d5db; font-size: 14px;">&copy; <span id="year"></span> Shopy — All rights reserved.</p>
+    </div>
+
+    <!-- Quick Links -->
+    <div style="flex: 1; min-width: 200px;">
+      <h4 style="margin-bottom: 10px; color: #ffffff;">Quick Links</h4>
+      <ul style="list-style: none; padding: 0; color: #d1d5db; font-size: 14px;">
+        <li><a href="./about.html" style="text-decoration: none; color: #d1d5db;" onmouseover="this.style.color='#60a5fa'" onmouseout="this.style.color='#d1d5db'">About Us</a></li>
+        <li><a href="./contact.html" style="text-decoration: none; color: #d1d5db;" onmouseover="this.style.color='#60a5fa'" onmouseout="this.style.color='#d1d5db'">Contact</a></li>
+        <li><a href="./privacy.html" style="text-decoration: none; color: #d1d5db;" onmouseover="this.style.color='#60a5fa'" onmouseout="this.style.color='#d1d5db'">Privacy Policy</a></li>
+      </ul>
+    </div>
+
+    <!-- Social Media -->
+     <div class="social-icons">
+    <!-- <div style="flex: 1; min-width: 250px;"> -->
+      <h4 style="margin-bottom: 10px; color: #ffffff;">Follow Us</h4>
+      <!-- <div style="display: flex; flex-direction: column; gap: 10px; font-size: 16px;"> -->
+        <div class="footer-social">
+        <a href="https://www.facebook.com/"  style="color: #3b82f6; text-decoration: none;">
+          <i class="fab fa-facebook-f" style="margin-right: 8px;"></i>shopyofficial
+        </a><br>
+        <a href="https://www.instagram.com/" style="color: #e11d48; text-decoration: none;">
+          <i class="fab fa-instagram" style="margin-right: 8px;"></i>@shopy.in
+        </a><br>
+        <a href="https://x.com/" style="color: #38bdf8; text-decoration: none;">
+         <i class="fa-brands fa-x-twitter" style="margin-right: 8px;"></i>@shopy_tweets
+        </a><br>
+        <a href="https://www.youtube.com/?reload=9&skip_registered_account_check=true" style="color: #f43f5e; text-decoration: none;">
+          <i class="fab fa-youtube" style="margin-right: 8px;"></i>Shopy Channel
+        </a>
+      </div>
+    </div>
+<!-- </div>
+  </div> -->
+</footer>
+
+
+  <script src="./app.js"></script>
+
+  <script>
+  const hamburgerBtn = document.getElementById('hamburgerBtn');
+  const mobileNav = document.getElementById('mobileNav');
+
+  hamburgerBtn.addEventListener('click', () => {
+    mobileNav.classList.toggle('show');
+  });
+</script>
+ </body>
+</html>

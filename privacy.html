@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+  <link rel="icon" href="../brand.png" type="image/png">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <!-- <link rel="stylesheet" href="style.css"> -->
+
+    <style>
+      
+      :root{
+  font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      }
+        .privacy-section {
+  background-color: #fff;
+  max-width: 900px;
+  margin: 30px auto;
+  padding: 40px 25px;
+  border-radius: 10px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.1);
+  font-family: Arial, sans-serif;
+  color: #333;
+}
+
+.privacy-section h2 {
+  color: #0077cc;
+  margin-bottom: 20px;
+  font-size: 28px;
+}
+
+.privacy-section h3 {
+  color: #005fa3;
+  margin-top: 25px;
+  margin-bottom: 10px;
+}
+
+.privacy-section p,
+.privacy-section ul {
+  line-height: 1.6;
+}
+
+.privacy-section ul {
+  padding-left: 20px;
+}
+
+.privacy-section li {
+  margin-bottom: 8px;
+}
+
+#togglePolicyBtn {
+  margin-top: 20px;
+  padding: 10px 18px;
+  font-size: 16px;
+  background-color: #0077cc;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+#togglePolicyBtn:hover {
+  background-color: #005fa3;
+}
+
+.hidden {
+  display: none;
+}
+
+/* Wrapper to center the button */
+.center-btn {
+  display: flex;
+  justify-content: center;
+  margin: 20px 0;
+}
+
+/* Base button styles */
+.back-home-btn {
+  background: #16664a;
+  border: none;
+  border-radius: 8px;
+  color: #fff;
+  cursor: pointer;
+  font-size: 16px;
+  padding: 12px 24px;
+  transition: background 0.3s ease, transform 0.2s ease;
+  width: auto; /* adaptive width */
+  max-width: 220px;
+}
+
+/* Hover effect */
+.back-home-btn:hover {
+  background: #0f4d37;
+  transform: translateY(-2px);
+}
+
+/* 🔹 Responsive adjustments */
+@media (max-width: 768px) {
+  .back-home-btn {
+    font-size: 15px;
+    padding: 10px 20px;
+    width: 80%;  /* take more width on tablets/phones */
+  }
+}
+
+@media (max-width: 480px) {
+  .back-home-btn {
+    font-size: 14px;
+    padding: 10px;
+    width: 100%; /* full width on small screens */
+  }
+}
+
+/* Social icons base style */
+.footer-social a {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 16px;
+  color: #d1d5db;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.footer-social a:hover {
+  transform: translateY(-2px);
+  text-decoration: underline;
+}
+
+/* Individual hover colors (optional) */
+.footer-social a.facebook:hover {
+  color: #3b82f6;
+}
+
+.footer-social a.instagram:hover {
+  color: #e11d48;
+}
+
+.footer-social a.twitter:hover {
+  color: #38bdf8;
+}
+
+.footer-social a.youtube:hover {
+  color: #f43f5e;
+}
+
+
+    </style>
+</head>
+<body>
+    <!-- Privacy Policy Section -->
+<section id="privacy" class="privacy-section">
+  <h2>Privacy Policy</h2>
+  <p>
+    At <strong>My Shopy</strong>, we are committed to protecting your privacy and ensuring your personal information is handled responsibly. This Privacy Policy explains how we collect, use, and safeguard your data when you use our website.
+  </p>
+
+  <button id="togglePolicyBtn">Read Full Privacy Policy</button>
+
+  <div id="fullPolicy" class="hidden">
+    <h3>1. Information We Collect</h3>
+    <ul>
+      <li><strong>Personal Information:</strong> Name, email, phone number, shipping address.</li>
+      <li><strong>Payment Information:</strong> Payment details processed securely through third-party providers.</li>
+      <li><strong>Usage Data:</strong> Browsing behavior, purchase history, cookies, and IP addresses.</li>
+    </ul>
+
+    <h3>2. How We Use Your Information</h3>
+    <ul>
+      <li>To process orders and provide customer support.</li>
+      <li>To improve our website and personalize your shopping experience.</li>
+      <li>To send promotional emails (only if you opt-in).</li>
+      <li>To comply with legal obligations.</li>
+    </ul>
+
+    <h3>3. Data Security</h3>
+    <p>
+      We use industry-standard security measures to protect your information from unauthorized access, alteration, or disclosure.
+    </p>
+
+    <h3>4. Sharing Information</h3>
+    <p>
+      We do not sell or rent your personal data. Your information is only shared with trusted third parties necessary for order fulfillment (e.g., shipping carriers, payment processors).
+    </p>
+
+    <h3>5. Your Rights</h3>
+    <ul>
+      <li>Access, update, or delete your personal information.</li>
+      <li>Opt-out of marketing communications.</li>
+      <li>Request data portability or restriction of processing.</li>
+    </ul>
+
+    <h3>6. Cookies</h3>
+    <p>
+      Our website uses cookies to enhance user experience. You can manage your cookie preferences via your browser settings.
+    </p>
+
+    <h3>7. Contact Us</h3>
+    <p>
+      If you have questions about this Privacy Policy or your personal data, please contact us at <a href="mailto:privacy@myshopy.com">privacy@myshopy.com</a>.
+    </p>
+  </div>
+</section>
+
+<!-- Back to Home Button -->
+<div class="center-btn">
+  <button class="back-home-btn" onclick="window.location.href='index.html'">
+    ← Back to Home
+  </button>
+</div>
+
+
+ 
+ <footer style="background-color: #02224e; padding: 40px 20px; color: #f9fafb;">
+  <div style="max-width: 1200px; margin: auto; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 40px;">
+    
+    <!-- Brand Section -->
+    <div style="flex: 1; min-width: 250px;">
+      <h2 style="margin-bottom: 10px; color: #ffffff;">Shopy</h2>
+      <p style="color: #d1d5db; font-size: 14px;">&copy; <span id="year"></span> Shopy — All rights reserved.</p>
+    </div>
+
+    <!-- Quick Links -->
+    <div style="flex: 1; min-width: 200px;">
+      <h4 style="margin-bottom: 10px; color: #ffffff;">Quick Links</h4>
+      <ul style="list-style: none; padding: 0; color: #d1d5db; font-size: 14px;">
+        <li><a href="./about.html" style="text-decoration: none; color: #d1d5db;" onmouseover="this.style.color='#60a5fa'" onmouseout="this.style.color='#d1d5db'">About Us</a></li>
+        <li><a href="./contact.html" style="text-decoration: none; color: #d1d5db;" onmouseover="this.style.color='#60a5fa'" onmouseout="this.style.color='#d1d5db'">Contact</a></li>
+        <li><a href="./privacy.html" style="text-decoration: none; color: #d1d5db;" onmouseover="this.style.color='#60a5fa'" onmouseout="this.style.color='#d1d5db'">Privacy Policy</a></li>
+      </ul>
+    </div>
+
+    <!-- Social Media -->
+     <div class="social-icons">
+    <!-- <div style="flex: 1; min-width: 250px;"> -->
+      <h4 style="margin-bottom: 10px; color: #ffffff;">Follow Us</h4>
+      <!-- <div style="display: flex; flex-direction: column; gap: 10px; font-size: 16px;"> -->
+        <div class="footer-social">
+        <a href="https://www.facebook.com/"  style="color: #3b82f6; text-decoration: none;">
+          <i class="fab fa-facebook-f" style="margin-right: 8px;"></i>shopyofficial
+        </a><br>
+        <a href="https://www.instagram.com/" style="color: #e11d48; text-decoration: none;">
+          <i class="fab fa-instagram" style="margin-right: 8px;"></i>@shopy.in
+        </a><br>
+        <a href="https://x.com/" style="color: #38bdf8; text-decoration: none;">
+         <i class="fa-brands fa-x-twitter" style="margin-right: 8px;"></i>@shopy_tweets
+        </a><br>
+        <a href="https://www.youtube.com/?reload=9&skip_registered_account_check=true" style="color: #f43f5e; text-decoration: none;">
+          <i class="fab fa-youtube" style="margin-right: 8px;"></i>Shopy Channel
+        </a>
+      </div>
+    </div>
+<!-- </div>
+  </div> -->
+</footer>
+
+  <script src="./app.js"></script>
+
+</body>
+</html>
+
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+  const toggleBtn = document.getElementById("togglePolicyBtn");
+  const fullPolicy = document.getElementById("fullPolicy");
+
+  toggleBtn.addEventListener("click", () => {
+    if (fullPolicy.classList.contains("hidden")) {
+      fullPolicy.classList.remove("hidden");
+      toggleBtn.textContent = "Show Less";
+    } else {
+      fullPolicy.classList.add("hidden");
+      toggleBtn.textContent = "Read Full Privacy Policy";
+    }
+  });
+});
+
+</script>

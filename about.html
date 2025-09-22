@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+  <link rel="icon" href="../brand.png" type="image/png">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <!-- <link rel="stylesheet" href="style.css"> -->
+
+    <style>
+      
+      :root{
+  font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      }
+        .about-section {
+  background-color: #ffffff;
+  padding: 40px 20px;
+  max-width: 900px;
+  margin: 30px auto;
+  border-radius: 10px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.1);
+  font-family: Arial, sans-serif;
+}
+
+.about-section h2 {
+  color: #333;
+  font-size: 28px;
+  margin-bottom: 20px;
+}
+
+.about-section p {
+  color: #555;
+  line-height: 1.6;
+}
+
+.about-box {
+  margin-top: 20px;
+  padding: 15px;
+  border-left: 5px solid #00aaff;
+  background-color: #f9f9f9;
+  border-radius: 5px;
+}
+
+.about-box h3 {
+  margin-top: 0;
+  color: #0077cc;
+}
+
+.about-box ul {
+  padding-left: 20px;
+}
+
+.about-box li {
+  margin-bottom: 8px;
+}
+
+#readMoreBtn {
+  margin-top: 25px;
+  padding: 10px 20px;
+  background-color: #0077cc;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 15px;
+}
+
+#readMoreBtn:hover {
+  background-color: #005fa3;
+}
+
+.hidden {
+  display: none;
+}
+
+/* Wrapper to center the button */
+.center-btn {
+  display: flex;
+  justify-content: center;
+  margin: 20px 0;
+}
+
+/* Base button styles */
+.back-home-btn {
+  background: #16664a;
+  border: none;
+  border-radius: 8px;
+  color: #fff;
+  cursor: pointer;
+  font-size: 16px;
+  padding: 12px 24px;
+  transition: background 0.3s ease, transform 0.2s ease;
+  width: auto; /* adaptive width */
+  max-width: 220px;
+}
+
+/* Hover effect */
+.back-home-btn:hover {
+  background: #0f4d37;
+  transform: translateY(-2px);
+}
+
+/* 🔹 Responsive adjustments */
+@media (max-width: 768px) {
+  .back-home-btn {
+    font-size: 15px;
+    padding: 10px 20px;
+    width: 80%;  /* take more width on tablets/phones */
+  }
+}
+
+@media (max-width: 480px) {
+  .back-home-btn {
+    font-size: 14px;
+    padding: 10px;
+    width: 100%; /* full width on small screens */
+  }
+}
+
+
+/* Social icons base style */
+.footer-social a {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 16px;
+  color: #d1d5db;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.footer-social a:hover {
+  transform: translateY(-2px);
+  text-decoration: underline;
+}
+
+/* Individual hover colors (optional) */
+.footer-social a.facebook:hover {
+  color: #3b82f6;
+}
+
+.footer-social a.instagram:hover {
+  color: #e11d48;
+}
+
+.footer-social a.twitter:hover {
+  color: #38bdf8;
+}
+
+.footer-social a.youtube:hover {
+  color: #f43f5e;
+}
+
+    </style>
+</head>
+<body>
+   <!-- About Us Section -->
+<section id="about" class="about-section">
+  <h2>About My Shopy</h2>
+  <p>
+    At <strong>My Shopy</strong>, we are more than just an e-commerce platform — we are a destination for quality, affordability, and convenience. Founded in 2022, we aim to revolutionize the online shopping experience by offering a wide range of products delivered right to your doorstep.
+  </p>
+
+  <div class="about-box">
+    <h3>🎯 Our Mission</h3>
+    <p>To provide a seamless, secure, and satisfying shopping experience for customers around the globe.</p>
+  </div>
+
+  <div class="about-box">
+    <h3>🌟 Our Vision</h3>
+    <p>To be the most trusted online marketplace, empowering people with easy access to quality products and excellent customer service.</p>
+  </div>
+
+  <div class="about-box">
+    <h3>💡 Why Shop With Us?</h3>
+    <ul>
+      <li>✅ Wide range of products</li>
+      <li>✅ Secure payments</li>
+      <li>✅ Fast & reliable shipping</li>
+      <li>✅ 24/7 customer support</li>
+      <li>✅ Easy returns & refunds</li>
+    </ul>
+  </div>
+
+  <button id="readMoreBtn">Read More</button>
+  <div id="moreContent" class="hidden">
+    <h3>👨‍💻 Meet Our Team</h3>
+    <p>We’re a passionate group of developers, designers, and marketers working together to create a user-first platform that you can trust.</p>
+    <p>Join the <strong>My Shopy</strong> family and enjoy shopping the way it should be — simple, fun, and worry-free!</p>
+  </div>
+</section>
+
+
+<!-- Back to Home Button -->
+<div class="center-btn">
+  <button class="back-home-btn" onclick="window.location.href='index.html'">
+    ← Back to Home
+  </button>
+</div>
+
+
+ <footer style="background-color: #02224e; padding: 40px 20px; color: #f9fafb;">
+  <div style="max-width: 1200px; margin: auto; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 40px;">
+    
+    <!-- Brand Section -->
+    <div style="flex: 1; min-width: 250px;">
+      <h2 style="margin-bottom: 10px; color: #ffffff;">Shopy</h2>
+      <p style="color: #d1d5db; font-size: 14px;">&copy; <span id="year"></span> Shopy — All rights reserved.</p>
+    </div>
+
+    <!-- Quick Links -->
+    <div style="flex: 1; min-width: 200px;">
+      <h4 style="margin-bottom: 10px; color: #ffffff;">Quick Links</h4>
+      <ul style="list-style: none; padding: 0; color: #d1d5db; font-size: 14px;">
+        <li><a href="./about.html" style="text-decoration: none; color: #d1d5db;" onmouseover="this.style.color='#60a5fa'" onmouseout="this.style.color='#d1d5db'">About Us</a></li>
+        <li><a href="./contact.html" style="text-decoration: none; color: #d1d5db;" onmouseover="this.style.color='#60a5fa'" onmouseout="this.style.color='#d1d5db'">Contact</a></li>
+        <li><a href="./privacy.html" style="text-decoration: none; color: #d1d5db;" onmouseover="this.style.color='#60a5fa'" onmouseout="this.style.color='#d1d5db'">Privacy Policy</a></li>
+      </ul>
+    </div>
+
+    <!-- Social Media -->
+     <div class="social-icons">
+    <!-- <div style="flex: 1; min-width: 250px;"> -->
+      <h4 style="margin-bottom: 10px; color: #ffffff;">Follow Us</h4>
+      <!-- <div style="display: flex; flex-direction: column; gap: 10px; font-size: 16px;"> -->
+        <div class="footer-social">
+        <a href="https://www.facebook.com/"  style="color: #3b82f6; text-decoration: none;">
+          <i class="fab fa-facebook-f" style="margin-right: 8px;"></i>shopyofficial
+        </a><br>
+        <a href="https://www.instagram.com/" style="color: #e11d48; text-decoration: none;">
+          <i class="fab fa-instagram" style="margin-right: 8px;"></i>@shopy.in
+        </a><br>
+        <a href="https://x.com/" style="color: #38bdf8; text-decoration: none;">
+         <i class="fa-brands fa-x-twitter" style="margin-right: 8px;"></i>@shopy_tweets
+        </a><br>
+        <a href="https://www.youtube.com/?reload=9&skip_registered_account_check=true" style="color: #f43f5e; text-decoration: none;">
+          <i class="fab fa-youtube" style="margin-right: 8px;"></i>Shopy Channel
+        </a>
+      </div>
+    </div>
+<!-- </div>
+  </div> -->
+</footer>
+  <script src="./app.js"></script>
+
+</body>
+</html>
+
+<script>
+    // Show/hide more content in the About section
+document.addEventListener("DOMContentLoaded", function () {
+  const btn = document.getElementById("readMoreBtn");
+  const moreContent = document.getElementById("moreContent");
+
+  btn.addEventListener("click", () => {
+    if (moreContent.classList.contains("hidden")) {
+      moreContent.classList.remove("hidden");
+      btn.textContent = "Show Less";
+    } else {
+      moreContent.classList.add("hidden");
+      btn.textContent = "Read More";
+    }
+  });
+});
+
+</script>
