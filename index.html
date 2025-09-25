@@ -33,6 +33,9 @@
       <option value="price-asc">Price: Low to High</option>
       <option value="price-desc">Price: High to Low</option>
     </select>
+     <button class="cart-btn" onclick="navigateTo('#/wishlist')">
+        ❤️ Wishlist <span id="wishlistCount">0</span>
+      </button>
     <button class="cart-btn" onclick="navigateTo('#/cart')">
       🛒 Cart <span class="cart-count" id="cartCount">0</span>
     </button>
@@ -48,6 +51,9 @@
     <option value="price-asc">Price: Low to High</option>
     <option value="price-desc">Price: High to Low</option>
   </select>
+   <button class="cart-btn" onclick="navigateTo('#/wishlist')">
+      ❤️ <span id="wishlistCountMobile">0</span>
+    </button>
   <button class="cart-btn" onclick="navigateTo('#/cart')">
     🛒 Cart <span class="cart-count" id="cartCountMobile">0</span>
   </button>
@@ -144,6 +150,15 @@
     <button class="btn " onclick="window.history.back()">← Previous</button>
   </div>
 </section>
+
+       <!-- WISHLIST VIEW -->
+      <section id="view-wishlist" class="view hidden" aria-live="polite">
+        <h2>Your Wishlist ❤️</h2>
+        <div id="wishlistGrid" class="grid"></div>
+        <div style="text-align:center; margin-top: 20px;">
+          <button class="btn " onclick="window.history.back()">← Back</button>
+        </div>
+      </section>
 
    
       <!-- CHECKOUT VIEW -->
