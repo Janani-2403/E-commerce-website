@@ -545,6 +545,7 @@ const PRODUCTS = [
   }
 ];
 
+
 // ---------- Utilities ----------
 const $ = id => document.getElementById(id);
 const saveCart = cart => localStorage.setItem('myshop_cart', JSON.stringify(cart));
@@ -554,6 +555,12 @@ const format = n => Number(n).toLocaleString(undefined, { minimumFractionDigits:
 // ---------- App State ----------
 let CART = loadCart();
 let DETAIL_QTY = 1;
+
+// Wishlist state
+let WISHLIST = JSON.parse(localStorage.getItem('myshop_wishlist') || '[]');
+function saveWishlist() {
+  localStorage.setItem('myshop_wishlist', JSON.stringify(WISHLIST));
+}
 
 // Initialize UI
 document.getElementById('year').textContent = new Date().getFullYear();
@@ -578,22 +585,17 @@ document.getElementById('year').textContent = new Date().getFullYear();
 // ---------- Render products listing ----------
 function renderProducts() {
   const grid = $('productsGrid');
-
-  // detect mobile vs desktop
   let isMobile = window.innerWidth <= 640;
 
-  // ✅ Use correct search input
   let query = isMobile
     ? $('searchInputMobile').value.trim().toLowerCase()
     : $('searchInput').value.trim().toLowerCase();
 
-  // ✅ Category selection
   let cat = isMobile
     ? $('categoryFilterMobile').value
     : $('categoryFilter').value;
   if (!cat) cat = 'all';
 
-  // ✅ Sort selection
   let sort = isMobile
     ? $('sortSelectMobile').value
     : $('sortSelect').value;
@@ -606,7 +608,6 @@ function renderProducts() {
   $('sortSelect').value = sort;
   $('sortSelectMobile').value = sort;
 
-  // Filtering logic
   let items = PRODUCTS.filter(p => {
     const matchesQuery = !query ||
       p.name.toLowerCase().includes(query) ||
@@ -626,8 +627,9 @@ function renderProducts() {
   items.forEach(p => {
     const card = document.createElement('article');
     card.className = 'card';
-
     const imgSrc = Array.isArray(p.img) ? p.img[0] : p.img;
+
+    const inWishlist = WISHLIST.includes(p.id);
 
     card.innerHTML = `
       <div class="thumb" style="background:#f8fafc; padding:8px; border-radius:8px; width:250px; height:200px; overflow:hidden;">
@@ -641,7 +643,7 @@ function renderProducts() {
         <div class="card-actions">
           <button class="btn" onclick="goToProduct(${p.id})">View</button>
           <button class="btn secondary" onclick="addToCart(${p.id},1)">Add</button>
-          <div style="margin-left:auto" class="muted">₹${format(p.price)}</div>
+          <button class="btn secondary" onclick="addToWishlist(${p.id})">${inWishlist ? "❤️" : "♡"} Wishlist</button>
         </div>
       </div>
     `;
@@ -666,11 +668,6 @@ function renderProductDetail(id) {
   const mainImg = $('detailMainImg');
   const mainImgSrc = Array.isArray(p.img) ? p.img[0] : p.img;
   mainImg.src = mainImgSrc;
-  mainImg.style.width = '100%';
-  mainImg.style.height = '400px';
-  mainImg.style.objectFit = 'contain';
-  mainImg.style.borderRadius = '8px';
-  mainImg.style.background = '#f8fafc';
 
   $('detailName').textContent = p.name;
   $('detailPrice').textContent = '₹' + format(p.price);
@@ -681,7 +678,6 @@ function renderProductDetail(id) {
 
   const thumbs = $('detailThumbs');
   thumbs.innerHTML = '';
-
   const images = Array.isArray(p.img) ? p.img : [p.img];
   images.forEach((imgSrc, index) => {
     const img = document.createElement('img');
@@ -710,7 +706,7 @@ function changeDetailQty(n) {
   DETAIL_QTY = v;
 }
 
-// ---------- Cart operations ----------
+// ---------- Cart ----------
 function addToCart(id, qty = 1) {
   const prod = PRODUCTS.find(p => p.id === id);
   if (!prod) return;
@@ -722,14 +718,13 @@ function addToCart(id, qty = 1) {
   }
   saveCart(CART);
   updateCartUI();
+  showToast("Added to cart 🛒");
 }
-
 function removeFromCart(id) {
   CART = CART.filter(i => i.id !== id);
   saveCart(CART);
   updateCartUI();
 }
-
 function changeQty(id, delta) {
   const it = CART.find(i => i.id === id);
   if (!it) return;
@@ -740,7 +735,6 @@ function changeQty(id, delta) {
     updateCartUI();
   }
 }
-
 function clearCart() {
   if (!confirm('Clear the cart?')) return;
   CART = [];
@@ -748,7 +742,6 @@ function clearCart() {
   updateCartUI();
   showToast('Cart cleared');
 }
-
 function updateCartUI() {
   const totalCount = CART.reduce((s, i) => s + i.qty, 0);
   $('cartCount').textContent = totalCount;
@@ -764,7 +757,7 @@ function updateCartUI() {
         const el = document.createElement('div');
         el.className = 'cart-item';
         el.innerHTML = `
-          <img class="ci-thumb" src="${item.img}" alt="${escapeHtml(item.name)}" style="width:100%;height:56px;object-fit:cover;border-radius:6px;">
+          <img class="ci-thumb" src="${item.img}" alt="${escapeHtml(item.name)}">
           <div style="flex:1">
             <div style="display:flex;align-items:center;gap:8px">
               <strong>${escapeHtml(item.name)}</strong>
@@ -774,13 +767,11 @@ function updateCartUI() {
           </div>
           <div style="display:flex;flex-direction:column;gap:6px;align-items:flex-end">
             <div>
-              <button onclick="changeQty(${item.id}, -1)" aria-label="decrease">−</button>
+              <button onclick="changeQty(${item.id}, -1)">−</button>
               <span style="padding:8px 10px">${item.qty}</span>
-              <button onclick="changeQty(${item.id}, 1)" aria-label="increase">+</button>
+              <button onclick="changeQty(${item.id}, 1)">+</button>
             </div>
-            <div>
-              <button class="btn secondary" onclick="removeFromCart(${item.id})">Remove</button>
-            </div>
+            <button class="btn secondary" onclick="removeFromCart(${item.id})">Remove</button>
           </div>
         `;
         list.appendChild(el);
@@ -806,6 +797,60 @@ function updateCartUI() {
   }
 }
 
+// ---------- Wishlist ----------
+function addToWishlist(id) {
+  if (!WISHLIST.includes(id)) {
+    WISHLIST.push(id);
+    saveWishlist();
+    showToast("Added to wishlist ❤️");
+  } else {
+    showToast("Already in wishlist ❤️");
+  }
+  updateWishlistUI();
+}
+function removeFromWishlist(id) {
+  WISHLIST = WISHLIST.filter(itemId => itemId !== id);
+  saveWishlist();
+  updateWishlistUI();
+  showToast("Removed from wishlist ❌");
+}
+function updateWishlistUI() {
+  const count = WISHLIST.length;
+  if ($('wishlistCount')) $('wishlistCount').textContent = count;
+  if ($('wishlistCountMobile')) $('wishlistCountMobile').textContent = count;
+
+  if (currentView === 'wishlist') renderWishlist();
+}
+function renderWishlist() {
+  const grid = $('wishlistGrid');
+  grid.innerHTML = '';
+  if (WISHLIST.length === 0) {
+    grid.innerHTML = `<p>No items in wishlist yet.</p>`;
+    return;
+  }
+  WISHLIST.forEach(id => {
+    const p = PRODUCTS.find(prod => prod.id === id);
+    if (p) {
+      const card = document.createElement('article');
+      card.className = 'card';
+      const imgSrc = Array.isArray(p.img) ? p.img[0] : p.img;
+      card.innerHTML = `
+        <div class="thumb">
+          <img src="${imgSrc}" alt="${escapeHtml(p.name)}">
+        </div>
+        <h3>${escapeHtml(p.name)}</h3>
+        <div class="price">₹${format(p.price)}</div>
+        <div class="wishlist-actions">
+          <button class="btn" onclick="goToProduct(${p.id})">View</button>
+          <button class="btn secondary" onclick="addToCart(${p.id},1)">Add to Cart</button>
+          <button class="btn danger" onclick="removeFromWishlist(${p.id})">Remove</button>
+        </div>
+      `;
+      grid.appendChild(card);
+    }
+  });
+}
+
 // ---------- Checkout ----------
 function placeOrder(e) {
   e.preventDefault();
@@ -816,12 +861,10 @@ function placeOrder(e) {
   const name = $('cname').value.trim();
   const email = $('cemail').value.trim();
   const address = $('caddress').value.trim();
-  const payment = $('cpayment').value;
   if (!name || !email || !address) {
     alert('Please fill in required fields');
     return;
   }
-
   const orderId = 'ORD' + Date.now().toString(36).toUpperCase().slice(-8);
   sessionStorage.setItem('last_order_id', orderId);
   CART = [];
@@ -833,95 +876,68 @@ function placeOrder(e) {
 
 // ---------- Routing ----------
 let currentView = 'home';
-function navigateTo(hash) {
-  location.hash = hash;
-}
+function navigateTo(hash) { location.hash = hash; }
 function showView(id) {
-  ['view-home', 'view-product', 'view-cart', 'view-checkout', 'view-confirmation'].forEach(v => {
-    $(v).classList.add('hidden');
+  ['view-home','view-product','view-cart','view-checkout','view-confirmation','view-wishlist'].forEach(v=>{
+    if($(v)) $(v).classList.add('hidden');
   });
   $(id).classList.remove('hidden');
 }
 function router() {
   const hash = location.hash || '#/';
-  window.scrollTo(0, 0);
+  window.scrollTo(0,0);
   if (hash === '#/' || hash === '') {
-    currentView = 'home';
-    showView('view-home');
-    renderProducts();
+    currentView='home'; showView('view-home'); renderProducts();
   } else if (hash.startsWith('#/product/')) {
-    const parts = hash.split('/');
-    const id = Number(parts[2] || 0);
-    currentView = 'product';
-    showView('view-product');
-    renderProductDetail(id);
+    const id = Number(hash.split('/')[2]||0);
+    currentView='product'; showView('view-product'); renderProductDetail(id);
   } else if (hash === '#/cart') {
-    currentView = 'cart';
-    showView('view-cart');
-    updateCartUI();
+    currentView='cart'; showView('view-cart'); updateCartUI();
   } else if (hash === '#/checkout') {
-    currentView = 'checkout';
-    showView('view-checkout');
-    updateCartUI();
+    currentView='checkout'; showView('view-checkout'); updateCartUI();
+  } else if (hash === '#/wishlist') {
+    currentView='wishlist'; showView('view-wishlist'); renderWishlist();
   } else if (hash === '#/confirmation') {
-    currentView = 'confirmation';
-    showView('view-confirmation');
-    const last = sessionStorage.getItem('last_order_id');
-    $('orderIdDisplay').textContent = last || 'N/A';
-  } else {
-    navigateTo('#/');
-  }
+    currentView='confirmation'; showView('view-confirmation');
+    $('orderIdDisplay').textContent=sessionStorage.getItem('last_order_id')||'N/A';
+  } else navigateTo('#/');
 }
 
 // ---------- Small UI helpers ----------
-function showToast(msg, ms = 1500) {
-  const t = document.createElement('div');
-  t.textContent = msg;
-  t.style.position = 'fixed';
-  t.style.bottom = '20px';
-  t.style.left = '50%';
-  t.style.transform = 'translateX(-50%)';
-  t.style.background = 'rgba(15,23,42,0.9)';
-  t.style.color = 'white';
-  t.style.padding = '10px 14px';
-  t.style.borderRadius = '8px';
-  t.style.zIndex = 9999;
+function showToast(msg, ms=1500){
+  const t=document.createElement('div');
+  t.textContent=msg;
+  t.style.position='fixed';t.style.bottom='20px';t.style.left='50%';t.style.transform='translateX(-50%)';
+  t.style.background='rgba(15,23,42,0.9)';t.style.color='white';t.style.padding='10px 14px';
+  t.style.borderRadius='8px';t.style.zIndex=9999;
   document.body.appendChild(t);
-  setTimeout(() => t.style.opacity = '0.0', ms - 250);
-  setTimeout(() => t.remove(), ms);
+  setTimeout(()=>t.style.opacity='0.0', ms-250);
+  setTimeout(()=>t.remove(), ms);
 }
 
 // ---------- Events ----------
 window.addEventListener('hashchange', router);
-window.addEventListener('DOMContentLoaded', () => {
-  // Desktop
-  $('searchInput').addEventListener('input', debounce(renderProducts, 220));
+window.addEventListener('DOMContentLoaded', ()=>{
+  $('searchInput').addEventListener('input', debounce(renderProducts,220));
   $('categoryFilter').addEventListener('change', renderProducts);
   $('sortSelect').addEventListener('change', renderProducts);
-
-  // Mobile
-  $('searchInputMobile').addEventListener('input', debounce(renderProducts, 220));
+  $('searchInputMobile').addEventListener('input', debounce(renderProducts,220));
   $('categoryFilterMobile').addEventListener('change', renderProducts);
   $('sortSelectMobile').addEventListener('change', renderProducts);
-
   $('checkoutForm')?.addEventListener('submit', placeOrder);
   router();
   updateCartUI();
+  updateWishlistUI();
 });
-
-function debounce(fn, wait = 200) {
-  let t;
-  return function (...args) {
-    clearTimeout(t);
-    t = setTimeout(() => fn.apply(this, args), wait);
-  }
-}
+function debounce(fn,wait=200){let t;return function(...args){clearTimeout(t);t=setTimeout(()=>fn.apply(this,args),wait)}}
 
 // expose
-window.addToCart = addToCart;
-window.goToProduct = goToProduct;
-window.changeQty = changeQty;
-window.removeFromCart = removeFromCart;
-window.clearCart = clearCart;
-window.navigateTo = navigateTo;
-window.changeDetailQty = changeDetailQty;
+window.addToCart=addToCart;
+window.goToProduct=goToProduct;
+window.changeQty=changeQty;
+window.removeFromCart=removeFromCart;
+window.clearCart=clearCart;
+window.navigateTo=navigateTo;
+window.changeDetailQty=changeDetailQty;
+window.addToWishlist=addToWishlist;
+window.removeFromWishlist=removeFromWishlist;
